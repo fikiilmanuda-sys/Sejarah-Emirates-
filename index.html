@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sejarah Emirates Airlines • create by Fikk</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecf2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, #d62d2d 0%, #a51e1e 100%);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .logo-text span {
+            font-weight: 300;
+            font-size: 1rem;
+            margin-left: 8px;
+            opacity: 0.8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            opacity: 0.9;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .btn-create {
+            background: white;
+            color: #d62d2d;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-create:hover {
+            background: #f0f0f0;
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0b1c2f 0%, #1a3a4f 100%);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "✈️";
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 15rem;
+            opacity: 0.1;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffd700;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .credit-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        /* Intro Card */
+        .intro-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid #d62d2d;
+        }
+
+        .intro-card h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a3a4f;
+        }
+
+        .intro-card p {
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 4rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #d62d2d, #ffd700);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .timeline-badge {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: #d62d2d;
+            border: 4px solid #ffd700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(214,45,45,0.15);
+        }
+
+        .timeline-content.left {
+            margin-right: auto;
+            margin-left: 0;
+        }
+
+        .timeline-content.right {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .timeline-year {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #d62d2d;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #1a3a4f;
+        }
+
+        .timeline-desc {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-tag {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #555;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Facts Grid */
+        .facts-section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #1a3a4f;
+        }
+
+        .section-title i {
+            color: #d62d2d;
+            margin-right: 10px;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .fact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: #d62d2d;
+        }
+
+        .fact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #d62d2d, #a51e1e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .fact-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .fact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #1a3a4f;
+        }
+
+        .fact-card p {
+            color: #666;
+        }
+
+        /* Fleet Section */
+        .fleet-section {
+            margin: 4rem 0;
+        }
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .fleet-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .fleet-item i {
+            font-size: 2rem;
+            color: #d62d2d;
+        }
+
+        .fleet-info h4 {
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .fleet-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Milestones */
+        .milestones {
+            margin: 4rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .milestone {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .milestone .number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #d62d2d;
+        }
+
+        .milestone .label {
+            color: #666;
+            margin: 0.5rem 0;
+        }
+
+        .milestone .year {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Quote */
+        .quote-section {
+            background: linear-gradient(135deg, #1a3a4f, #0b1c2f);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .quote-section i {
+            font-size: 3rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .quote-text {
+            font-size: 1.6rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+        }
+
+        .quote-author {
+            font-size: 1.1rem;
+            color: #ffd700;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 5% 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ffd700;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ffd700;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        .footer-bottom i {
+            color: #ffd700;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-badge {
+                left: 20px;
+                transform: translateX(0);
+            }
+
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px !important;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .credit-badge {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-top: 1rem;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-plane"></i>
+            <div class="logo-text">Emirates<span>create by Fikk</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Beranda</a>
+            <a href="#sejarah">Sejarah</a>
+            <a href="#timeline">Timeline</a>
+            <a href="#fakta">Fakta</a>
+            <a href="#fleet">Armada</a>
+            <a href="#quote" class="btn-create"><i class="fas fa-feather"></i> create by Fikk</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="credit-badge">
+            <i class="fas fa-crown"></i> create by Fikk
+        </div>
+        <h1>Emirates Airlines</h1>
+        <div class="tagline">Dari Mimpi Menjadi Maskapai Terkemuka Dunia ✈️</div>
+        <p style="max-width: 700px; margin: 0 auto 2rem;">Didirikan pada tahun 1985 dengan hanya dua pesawat sewaan, kini Emirates telah menjelma menjadi salah satu maskapai terbesar dan paling inovatif di dunia [citation:1][citation:2].</p>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-number">1985</div>
+                <div class="stat-label">Tahun Berdiri</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">260+</div>
+                <div class="stat-label">Armada</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Destinasi</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Intro Card -->
+        <div class="intro-card" id="sejarah">
+            <h2><i class="fas fa-feather" style="color: #d62d2d;"></i> Awal Mula Emirates</h2>
+            <p>Pada tahun 1984, Sheikh Mohammed bin Rashid al Maktoum (anggota keluarga kerajaan Dubai yang progresif) meminta Sir Maurice Flanagan untuk menjajaki kemungkinan mendirikan maskapai penerbangan. Pada Desember tahun itu, rencana bisnis komprehensif telah siap dan nama "Emirates" dipilih untuk maskapai baru tersebut [citation:1][citation:4].</p>
+            <br>
+            <p>Misi yang diberikan sangat jelas: maskapai harus "terlihat sangat baik, layanan sangat baik, dan bisa menghasilkan keuntungan" — tanpa subsidi atau perlindungan politik di bawah kebijakan langit terbuka Dubai. Dengan modal awal hanya US$10 juta, maskapai ini resmi berdiri dan mulai beroperasi pada 25 Oktober 1985 [citation:2][citation:7].</p>
+        </div>
+
+        <!-- Timeline -->
+        <h2 class="section-title" id="timeline"><i class="fas fa-timeline"></i> Perjalanan Sejarah Emirates</h2>
+        <div class="timeline">
+            <!-- 1985 -->
+            <div class="timeline-item">
+                <div class="timeline-badge">1</div>
+                <div class="timeline-content left">
+                    <div class="timeline-year">1985</div>
+                    <div class="timeline-title">Penerbangan Perdana</div>
+                    <div class="timeline-desc">Pada 25 Oktober 1985, Emirates mengoperasikan penerbangan pertamanya dari Dubai ke Karachi dan Mumbai menggunakan Boeing 737 dan Airbus 300 B4 yang disewa dari Pakistan International Airlines [citation:1][citation:9].</div>
+                    <span class="timeline-tag"><i class="fas fa-plane"></i> Penerbangan Bersejarah</span>
+                </div>
+            </div>
+
+            <!-- 1987 -->
+            <div class="timeline-item">
+                <div class="timeline-badge">2</div>
+                <div class="timeline-content right">
+                    <div class="timeline-year">1987</div>
+                    <div class="timeline-title">Pesawat Pertama Milik Sendiri</div>
+                    <div class="timeline-desc">Pada 3 Juli 1987, Emirates menerima pesawat pertamanya yang dibeli sendiri, sebuah Airbus A310-304 dengan registrasi A6-EKA, terbang dari Toulouse ke Dubai. Tahun yang sama, rute Eropa pertama (London-Gatwick) dibuka [citation:1][citation:4].</div>
+                    <span class="timeline-tag"><i class="fas fa-crown"></i> Tonggak Sejarah</span>
+                </div>
+            </div>
+
+            <!-- 1992 -->
+            <div class="timeline-item">
+                <div class="timeline-badge">3</div>
+                <div class="timeline-content left">
+                    <div class="timeline-year">1992</div>
+                    <div class="timeline-title">Inovasi Hiburan dalam Penerbangan</div>
+                    <div class="timeline-desc">Emirates menjadi maskapai pertama yang memasang sistem video di semua kursi di semua kelas di seluruh armadanya, memimpin tren hiburan dalam penerbangan. Tahun yang sama, maskapai memesan 7 Boeing 777 dengan 7 opsi [citation:1][citation:4].</div>
+                    <span class="timeline-tag"><i class="fas fa-tv"></i> Inovasi Global</span>
+                </div>
+            </div>
+
+            <!-- 2000 -->
+            <div class="timeline-item">
+                <div class="timeline-badge">4</div>
+                <div class="timeline-content right">
+                    <div class="timeline-year">2000</div>
+                    <div class="timeline-title">Peluncuran Skywards & Pesanan A380</div>
+                    <div class="timeline-desc">Emirates meluncurkan program frequent flyer Skywards. Di Farnborough Air Show, Emirates menjadi maskapai pertama di dunia yang memesan Airbus A380, menandatangani pembelian 7 unit dengan opsi 5 unit tambahan [citation:1][citation:9].</div>
+                    <span class="timeline-tag"><i class="fas fa-star"></i> Era Baru</span>
+                </div>
+            </div>
+
+            <!-- 2004 -->
+            <div class="timeline-item">
+                <div class="timeline-badge">5</div>
+                <div class="timeline-content left">
+                    <div class="timeline-year">2004</div>
+                    <div class="timeline-title">Sponsor Arsenal FC</div>
+                    <div class="timeline-desc">Emirates menandatangani kesepakatan senilai £100 juta dengan klub Liga Inggris Arsenal, termasuk hak penamaan stadion selama 15 tahun dan sponsor jersey selama 8 tahun [citation:1].</div>
+                    <span class="timeline-tag"><i class="fas fa-futbol"></i> Sponsor Ikonik</span>
+                </d
